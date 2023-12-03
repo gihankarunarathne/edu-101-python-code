@@ -14,6 +14,8 @@ from greeting import GreetSomeone
 #     --task-queue <TaskQueueName> \
 #     --workflow-id <WorkflowID> \
 #     --input '"Mason"'
+# E.g.
+# temporal workflow start --type GreetSomeone --task-queue greeting-tasks --workflow-id=cli_workflow_1 --input='"Gihan"'
 
 # $ temporal workflow show --workflow-id <WorkflowID>
 

@@ -9,7 +9,7 @@ async def main():
     client = await Client.connect("localhost:7233")
 
     # Execute a workflow via code
-    result = await client.execute_workflow(GreetSomeone, sys.argv[2], id=f"test_workflow_{sys.argv[1]}", task_queue='greeting-tasks')
+    result = await client.execute_workflow(GreetSomeone, sys.argv[2], id=f"sync_workflow_{sys.argv[1]}", task_queue='greeting-tasks')
     print(f"Sync Result: {result}")
 
 
