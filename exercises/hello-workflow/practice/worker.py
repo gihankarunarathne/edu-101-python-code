@@ -5,14 +5,24 @@ from temporalio.worker import Worker
 
 from greeting import GreetSomeone
 
+# Start worker with `python worker.py`. This'll stuck in the a long poll.
+# Whatever the Workflows scheduled by Temporal will be executed via these workers.
+
+# To init a Workflow via terminal:
+# $ temporal workflow start \
+#     --type <WorkflowDefinition> \
+#     --task-queue <TaskQueueName> \
+#     --workflow-id <WorkflowID> \
+#     --input '"Mason"'
+
+# $ temporal workflow show --workflow-id <WorkflowID>
 
 async def main():
     client = await Client.connect("localhost:7233", namespace="default")
     # Run the worker
     worker = Worker(
-        # TODO: modify the statement below to specify the task queue name
         client,
-        task_queue="TODO",
+        task_queue="greeting-tasks",
         workflows=[GreetSomeone],
     )
     print("Starting worker...")
